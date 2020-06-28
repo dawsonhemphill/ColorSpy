@@ -20,7 +20,7 @@ namespace ColorSpy.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.Subscibe();
+            viewModel.SpyStarted = true;
         }
     }
 }

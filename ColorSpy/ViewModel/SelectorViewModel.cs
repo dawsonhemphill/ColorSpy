@@ -6,23 +6,38 @@ namespace ColorSpy.ViewModel
 {
     public class SelectorViewModel
     {
+        private IKeyboardMouseEvents m_globalhook;
+
         public SelectorModel SelectorModel { get; set; }
+
+        public bool IsSubscribed { get; set; }
+
+        public bool SpyStarted { get; set; }
 
         public SelectorViewModel()
         {
             SelectorModel = new SelectorModel();
+            SubscribeToMessages();
         }
 
         public void Subscibe()
         {
-            m_globalhook = Hook.GlobalEvents();
-            m_globalhook.MouseMoveExt += GlobalHookMouseMove;
+            if (!IsSubscribed && SpyStarted)
+            {
+                m_globalhook = Hook.GlobalEvents();
+                m_globalhook.MouseMoveExt += GlobalHookMouseMove;
+                IsSubscribed = true;
+            }
         }
 
         public void Unsubscibe()
         {
-            m_globalhook.MouseMoveExt -= GlobalHookMouseMove;
-            m_globalhook.Dispose();
+            if (IsSubscribed && SpyStarted)
+            {
+                m_globalhook.MouseMoveExt -= GlobalHookMouseMove;
+                m_globalhook.Dispose();
+                IsSubscribed = false;
+            }
         }
 
         private void GlobalHookMouseMove(object sender, MouseEventExtArgs e)
@@ -40,6 +55,20 @@ namespace ColorSpy.ViewModel
             }
         }
 
-        private IKeyboardMouseEvents m_globalhook;
+        private void SubscribeToMessages()
+        {
+            Mediator.Mediator.Instance.Register(
+                (object obj) =>
+                {
+                    Unsubscibe();
+                }, Mediator.Message.MouseEnteredWindow);
+
+            Mediator.Mediator.Instance.Register(
+                (object obj) =>
+                {
+                    Subscibe();
+                }, Mediator.Message.MouseLeftWindow);
+        }
+
     }
 }
