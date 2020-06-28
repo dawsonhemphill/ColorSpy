@@ -30,7 +30,8 @@
             Width="50"
             Height="20"
             Margin="10"
-            Background="Black">
+            Background="Black"
+            Click="Button_Click">
             <materialDesign:PackIcon
                 VerticalAlignment="Center"
                 Foreground="White"

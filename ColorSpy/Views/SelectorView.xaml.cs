@@ -25,5 +25,10 @@ namespace ColorSpy.Views
             viewModel.Unsubscibe();
             Loaded -= SelectorView_Loaded;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.Subscibe();
+        }
     }
 }

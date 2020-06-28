@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 
 namespace ColorSpy
 {
@@ -17,6 +18,12 @@ namespace ColorSpy
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+            DragMove();
         }
     }
 }

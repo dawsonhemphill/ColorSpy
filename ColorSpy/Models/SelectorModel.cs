@@ -44,28 +44,6 @@ namespace ColorSpy.Models
             }
         }
 
-        private int xPos;
-        public int XPos
-        {
-            get => xPos;
-            set
-            {
-                xPos = value;
-                RaisePropertyChanged("XPos");
-            }
-        }
-
-        private int yPos;
-        public int YPos
-        {
-            get => yPos;
-            set
-            {
-                yPos = value;
-                RaisePropertyChanged("YPos");
-            }
-        }
-
         private string hexColor;
 
         public string HexColor
