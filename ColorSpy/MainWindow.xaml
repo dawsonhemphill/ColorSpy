@@ -10,6 +10,8 @@
     AllowsTransparency="True"
     Background="Transparent"
     Icon="ColorSpy2.ico"
+    MouseEnter="Window_MouseEnter"
+    MouseLeave="Window_MouseLeave"
     ResizeMode="NoResize"
     WindowStyle="None"
     mc:Ignorable="d">

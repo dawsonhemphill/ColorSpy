@@ -30,5 +30,15 @@ namespace ColorSpy
         {
             WindowState = WindowState.Minimized;
         }
+
+        private void Window_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Mediator.Mediator.Instance.NotifyColleagues(Mediator.Message.MouseEnteredWindow, null);
+        }
+
+        private void Window_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Mediator.Mediator.Instance.NotifyColleagues(Mediator.Message.MouseLeftWindow, null);
+        }
     }
 }
