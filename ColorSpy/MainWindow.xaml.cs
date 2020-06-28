@@ -25,5 +25,10 @@ namespace ColorSpy
             base.OnMouseLeftButtonDown(e);
             DragMove();
         }
+
+        private void Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
     }
 }

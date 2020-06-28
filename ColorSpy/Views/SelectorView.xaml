@@ -3,7 +3,6 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:ColorSpy.Views"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="clr-namespace:ColorSpy.ViewModel"
@@ -26,19 +25,6 @@
                 Fill="{Binding SelectorModel.HexColor}" />
         </Border>
 
-        <Button
-            Width="50"
-            Height="20"
-            Margin="10"
-            Background="Black"
-            Click="Button_Click">
-            <materialDesign:PackIcon
-                VerticalAlignment="Center"
-                Foreground="White"
-                Kind="Magnify" />
-        </Button>
-
-
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
             <Label Content="Hex: " FontWeight="Bold" />
             <Label Content="{Binding SelectorModel.HexColor}" FontWeight="Bold" />
@@ -52,5 +38,18 @@
             <Label Content="Blue: " FontWeight="Bold" />
             <Label Content="{Binding SelectorModel.Blue}" FontWeight="Bold" />
         </StackPanel>
+
+        <Button
+            Width="50"
+            Height="20"
+            Margin="10"
+            Background="#007ACC"
+            Click="Button_Click">
+            <materialDesign:PackIcon
+                VerticalAlignment="Center"
+                Foreground="White"
+                Kind="Magnify" />
+        </Button>
+
     </StackPanel>
 </UserControl>
