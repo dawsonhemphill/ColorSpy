@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="clr-namespace:ColorSpy.Views"
     Width="275"
-    Height="390"
+    Height="350"
     AllowsTransparency="True"
     Background="Transparent"
     Icon="ColorSpy2.ico"
@@ -41,31 +41,34 @@
                 </StackPanel.OpacityMask>
 
                 <Border Height="30" Background="#2D2D30">
-                    <StackPanel
-                        Margin="0,0,10,0"
-                        HorizontalAlignment="Right"
-                        Orientation="Horizontal">
+                    <DockPanel Margin="0,0,10,0">
+                        <Button
+                            Width="15"
+                            Height="15"
+                            Background="#FF605C"
+                            Click="Close_Click"
+                            DockPanel.Dock="Right"
+                            Style="{DynamicResource MaterialDesignFloatingActionButton}" />
                         <Button
                             Width="15"
                             Height="15"
                             Margin="0,0,8,0"
                             Background="#FFBD44"
                             Click="Minimize_Click"
+                            DockPanel.Dock="Right"
                             Style="{DynamicResource MaterialDesignFloatingActionButton}" />
-                        <Button
-                            Width="15"
-                            Height="15"
-                            Background="#FF605C"
-                            Click="Close_Click"
-                            Style="{DynamicResource MaterialDesignFloatingActionButton}" />
-
-                    </StackPanel>
+                        <Label
+                            Content="Color Spy"
+                            DockPanel.Dock="Left"
+                            FontSize="15"
+                            Foreground="White" Margin="10,0,0,0" />
+                    </DockPanel>
 
                 </Border>
 
                 <views:SelectorView
                     Width="250"
-                    Height="310"
+                    Height="295"
                     Margin="10" />
             </StackPanel>
         </Grid>

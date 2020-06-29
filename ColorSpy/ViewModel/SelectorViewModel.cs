@@ -1,5 +1,7 @@
 ﻿using ColorSpy.Models;
 using Gma.System.MouseKeyHook;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace ColorSpy.ViewModel
@@ -16,6 +18,11 @@ namespace ColorSpy.ViewModel
 
         public SelectorViewModel()
         {
+            Hook.GlobalEvents().OnCombination(new Dictionary<Combination, Action>
+            {
+                {Combination.FromString("Control+Shift+S"), CaptureColor},
+            });
+
             SelectorModel = new SelectorModel();
             SubscribeToMessages();
         }
@@ -53,6 +60,12 @@ namespace ColorSpy.ViewModel
                 SelectorModel.Blue = pixel.B;
                 SelectorModel.Green = pixel.G;
             }
+        }
+
+        private void CaptureColor()
+        {
+            Unsubscibe();
+            SpyStarted = false;
         }
 
         private void SubscribeToMessages()
