@@ -34,8 +34,6 @@ namespace ColorSpy.ViewModel
                 m_globalhook = Hook.GlobalEvents();
                 m_globalhook.MouseMoveExt += GlobalHookMouseMove;
                 IsSubscribed = true;
-
-
             }
         }
 
