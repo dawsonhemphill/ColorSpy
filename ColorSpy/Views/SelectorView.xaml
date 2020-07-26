@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:utils="clr-namespace:ColorSpy.Utils"
     xmlns:viewModel="clr-namespace:ColorSpy.ViewModel"
     d:DesignHeight="300"
     d:DesignWidth="250"
@@ -13,6 +14,10 @@
     <UserControl.DataContext>
         <viewModel:SelectorViewModel x:Name="viewModel" />
     </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <utils:NullOrEmptyVisibilityConverter x:Key="NullEmptyVisibilityConverter" />
+    </UserControl.Resources>
 
     <StackPanel Orientation="Vertical">
         <Border
@@ -26,8 +31,29 @@
         </Border>
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-            <Label Content="Hex: " FontWeight="Bold" />
-            <Label Content="{Binding SelectorModel.HexColor}" FontWeight="Bold" />
+            <Label
+                VerticalAlignment="Center"
+                Content="Hex: "
+                FontWeight="Bold" />
+            <Label
+                VerticalAlignment="Center"
+                Content="{Binding SelectorModel.HexColor}"
+                FontWeight="Bold"
+                Visibility="{Binding SelectorModel.HexColor, Converter={StaticResource NullEmptyVisibilityConverter}}" />
+            <Button
+                Width="Auto"
+                Height="Auto"
+                Background="Transparent"
+                BorderThickness="0"
+                Command="{Binding CopyHexToClipboard}"
+                Visibility="{Binding SelectorModel.HexColor, Converter={StaticResource NullEmptyVisibilityConverter}}">
+                <Button.Content>
+                    <materialDesign:PackIcon
+                        VerticalAlignment="Center"
+                        Foreground="#007ACC"
+                        Kind="ContentCopy" />
+                </Button.Content>
+            </Button>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">

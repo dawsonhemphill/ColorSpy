@@ -70,6 +70,8 @@
     </ApplicationDefinition>
     <Compile Include="Mediator\Mediator.cs" />
     <Compile Include="Mediator\MultiDictionary{T,K}.cs" />
+    <Compile Include="Utils\RelayCommand.cs" />
+    <Compile Include="Utils\NullOrEmptyVisibilityConverter.cs" />
     <Compile Include="Views\SelectorView.xaml.cs">
       <DependentUpon>SelectorView.xaml</DependentUpon>
     </Compile>

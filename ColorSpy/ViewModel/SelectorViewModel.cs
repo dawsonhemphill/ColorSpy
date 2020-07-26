@@ -3,6 +3,7 @@ using Gma.System.MouseKeyHook;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using ColorSpy.Utils;
 
 namespace ColorSpy.ViewModel
 {
@@ -16,12 +17,16 @@ namespace ColorSpy.ViewModel
 
         public bool SpyStarted { get; set; }
 
+        public RelayCommand CopyHexToClipboard { get; }
+
         public SelectorViewModel()
         {
             Hook.GlobalEvents().OnCombination(new Dictionary<Combination, Action>
             {
                 {Combination.FromString("Control+Shift+S"), CaptureColor},
             });
+
+            CopyHexToClipboard = new RelayCommand(param => ExecuteCopyToClipboard());
 
             SelectorModel = new SelectorModel();
             SubscribeToMessages();
@@ -81,6 +86,11 @@ namespace ColorSpy.ViewModel
                 {
                     Subscibe();
                 }, Mediator.Message.MouseLeftWindow);
+        }
+
+        private void ExecuteCopyToClipboard()
+        {
+            System.Windows.Forms.Clipboard.SetText(SelectorModel.HexColor);
         }
 
     }
